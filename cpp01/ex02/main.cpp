@@ -7,7 +7,7 @@ int main()
     std::string& stringREF = str;
 
     std::cout << &str << std::endl;      //The memory address of the string variable
-    std::cout << stringPTR <<std::endl;  //The memory address held by stringPTR
+    std::cout << stringPTR << std::endl;  //The memory address held by stringPTR
     std::cout << &stringREF <<std::endl; //The memory address held by stringREF
 
     std::cout << str << std::endl;         //The value of the string variable
