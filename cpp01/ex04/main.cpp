@@ -1,3 +1,4 @@
+#include "replace.hpp"
 #include <iostream>
 
 int main(int argc, char **argv)
@@ -17,6 +18,7 @@ int main(int argc, char **argv)
         std::cerr << "Error: Some data is empty." << std::endl;
         return 1;
     }
+    replace(filename, s1, s2);
 
     return 0;
 }
