@@ -29,7 +29,7 @@ Fixed::Fixed(const float fnumber)
         std::exit(1);
     }
     else
-        fpnumber = round(tmpVal);
+        fpnumber = roundf(tmpVal);
 }
 Fixed::Fixed(const Fixed& other)
 {
