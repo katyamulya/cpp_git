@@ -40,9 +40,16 @@ public:
 
     /* The 4 increment/decrement: */
     Fixed& operator ++ ();
-   // Fixed operator ++ (int);
-   // Fixed& operator -- ();
-   // Fixed operator -- (int);
+    Fixed operator ++ (int);
+    Fixed& operator -- ();
+    Fixed operator -- (int);
+
+    /* The 4 overloaded member functions: */
+    static Fixed& min (Fixed& arg1, Fixed& arg2);
+    static const Fixed& min (const Fixed& arg1, const Fixed& arg2);
+    static Fixed& max (Fixed& arg1, Fixed& arg2);
+    static const Fixed& max (const Fixed& arg1, const Fixed& arg2);
+
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);

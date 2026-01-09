@@ -119,6 +119,45 @@ Fixed& Fixed::operator ++ ()
     ++fpnumber;
     return *this;
 }
+Fixed Fixed::operator ++ (int)
+{
+    Fixed tmp(*this);
+    fpnumber++;
+    return tmp;
+}
+Fixed& Fixed::operator -- ()
+{
+    --fpnumber;
+    return *this;
+}
+Fixed Fixed::operator -- (int)
+{
+    Fixed tmp(*this);
+    fpnumber--;
+    return tmp;
+}
+
+/* The 4 overloaded member functions: */
+Fixed& Fixed::min (Fixed& arg1, Fixed& arg2)
+{
+    //std::cout << "Called min static\n";
+    return (arg1 < arg2) ? arg1 : arg2;
+}
+const Fixed& Fixed::min (const Fixed& arg1, const Fixed& arg2)
+{
+   // std::cout << "Called min static const\n";
+    return (arg1 < arg2) ? arg1 : arg2;
+}
+Fixed& Fixed::max (Fixed& arg1, Fixed& arg2)
+{
+    //std::cout << "Called max static\n";
+    return (arg1 > arg2) ? arg1 : arg2;
+}
+const Fixed& Fixed::max (const Fixed& arg1, const Fixed& arg2)
+{
+    //std::cout << "Called max static const\n";
+    return (arg1 > arg2) ? arg1 : arg2;
+}
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 {
