@@ -23,7 +23,12 @@ ScavTrap& ScavTrap::operator = (const ScavTrap& other)
 
     if (this == &other) 
         return *this;
-    ClapTrap::operator=(other);
+    this->name = other.name;
+    this->hitPoints = other.hitPoints;
+    this->energyPoints = other.energyPoints;
+    this->attackDamage = other.attackDamage;
+    return *this;
+   // ClapTrap::operator=(other);
 }
 ScavTrap::~ScavTrap()
 {
