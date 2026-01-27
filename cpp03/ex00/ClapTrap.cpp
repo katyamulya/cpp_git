@@ -64,7 +64,10 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     if (this->energyPoints == 0 || this->hitPoints == 0)
     {
-        std::cout << this->name << " doesn't have enough points to be repaired!\n";
+        if (this->hitPoints == 0)
+            std::cout << this->name << " is already dead, can't be repaired!\n";
+        else
+            std::cout << this->name << " doesn't have enough points to be repaired!\n";
         return ;
     }
     this->hitPoints += amount;
