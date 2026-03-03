@@ -82,3 +82,8 @@ void Cat::makeSound() const
 {
     std::cout << "Meow!\n";
 }
+
+void Cat::printBrainIdea(int i) const {
+        // Use the function from class Brain
+    std::cout << this->brain->getIdea(i) << std::endl;
+}

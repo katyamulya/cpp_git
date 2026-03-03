@@ -1,6 +1,8 @@
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
+#include <string>
+
 class Animal
 {
     protected:        //cab be used by the inherit class
@@ -35,5 +37,4 @@ Important Note:
 For the delete myAnimal above to work without leaking the Brain, 
 your Animal class must have a virtual destructor: 
 virtual ~Animal();.
-
 */

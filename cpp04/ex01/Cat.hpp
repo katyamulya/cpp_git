@@ -19,6 +19,7 @@ class Cat : public Animal  //inheritance from class Animal
         ~Cat();
 
         void makeSound() const override;
+        void printBrainIdea(int i) const;
 };
 
 #endif
