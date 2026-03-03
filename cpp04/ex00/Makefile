@@ -9,6 +9,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++17
 
 all:	${NAME}
 
+%.o: %.cpp
+	${CC} ${CFLAGS} -c $< -o $@
+
 ${NAME}:	${OBJ}
 	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
 
