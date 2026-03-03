@@ -2,6 +2,7 @@
 #define ANIMAL_HPP
 
 #include <string>
+#include <iostream>
 
 class Animal
 {
@@ -14,7 +15,7 @@ class Animal
         Animal();
        // Animal(const std::string name);
         Animal(const Animal& other);  //Copy constructor
-        Animal& operator = (const Animal& other);  //Copy assignment operator
+        Animal& operator=(const Animal& other);  //Copy assignment operator
         virtual ~Animal();
 
         virtual void makeSound() const;

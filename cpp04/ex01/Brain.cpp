@@ -38,9 +38,16 @@ Brain::~Brain()
 
 std::string Brain::getIdea(int index) const
 {
-	if (index < 0 || index >=100)
+	if (index < 0 || index >= 100)
 		return "Error: Wrong index!";
 	return ideas[index];
+}
+
+void Brain::setIdea(int i, std::string idea)
+{
+	if (i < 0 || i >= 100)
+		std::cout << "Error: Wrong index!" << std::endl;
+	ideas[i] = idea;
 }
 
 

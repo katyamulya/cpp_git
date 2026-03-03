@@ -38,23 +38,14 @@ int main()
 	std::cout << "\nCreate a copy of Cat:" << std::endl;
 	Cat cat1;
 	Cat cat2(cat1);
+	std::cout << "Before:" << std::endl;
 	cat1.printBrainIdea(2);
 	cat2.printBrainIdea(2);
-	
+	std::cout << "After:" << std::endl;
+	cat1.setNewIdea(2, "New Idea");
+	cat1.printBrainIdea(2);
+	cat2.printBrainIdea(2);
+
 	return 0;
 
 }
-
-/*
-Default constructor for Animal called!
-Default constructor for Animal called!
-Default constructor for Dog called!
-Default constructor for Animal called!
-Default constructor for Cat called!
-Dog 
-Cat 
-Meow!
-Woof!
-Animal makes sound!
-
-*/

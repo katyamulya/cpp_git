@@ -19,7 +19,7 @@ Cat::Cat() : Animal(), brain(new Brain())
 When you create a new cat from an existing one (Cat kitty = original;), 
 you need to create a new Brain and copy the contents of the old brain into it.
 */
-Cat::Cat(const Cat& other)
+Cat::Cat(const Cat& other) : Animal(other)
 {
     std::cout << "Copy constructor for Cat called!\n";
 
@@ -61,11 +61,13 @@ This is the trickiest part. You must handle three things:
 - Delete the current brain to prevent a leak.
 - Allocate a new brain and copy the data
 */
-Cat& Cat::operator = (const Cat& other)
+Cat& Cat::operator=(const Cat& other)
 {
     std::cout << "Copy assignment operator for Cat called!\n";
     if (this != &other) { // 1. Self-assignment check
-        this->type = other.type;
+        //this->type = other.type;
+        // Let Animal handle its part (type, etc.)
+        Animal::operator=(other); 
         delete this->brain; // 2. Clean up existing brain
         this->brain = new Brain(*(other.brain)); // 3. Deep copy
     }
@@ -86,4 +88,9 @@ void Cat::makeSound() const
 void Cat::printBrainIdea(int i) const {
         // Use the function from class Brain
     std::cout << this->brain->getIdea(i) << std::endl;
+}
+
+void Cat::setNewIdea(int index, std::string idea)
+{
+    this->brain->setIdea(index, idea);
 }

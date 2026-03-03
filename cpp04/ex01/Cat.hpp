@@ -3,6 +3,7 @@
 
 #include "Animal.hpp"
 #include "Brain.hpp"
+#include <string>
 
 class Cat : public Animal  //inheritance from class Animal
 {
@@ -15,11 +16,12 @@ class Cat : public Animal  //inheritance from class Animal
         Cat();
        // Cat(const std::string type);
         Cat(const Cat& other);  //Copy constructor
-        Cat& operator = (const Cat& other);  //Copy assignment operator
+        Cat& operator=(const Cat& other);  //Copy assignment operator
         ~Cat();
 
         void makeSound() const override;
         void printBrainIdea(int i) const;
+        void setNewIdea(int index, std::string idea);
 };
 
 #endif

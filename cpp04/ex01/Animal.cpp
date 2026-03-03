@@ -1,11 +1,9 @@
-#include <iostream>
-#include <string>
 #include "Animal.hpp"
 
 Animal::Animal()
 {
+	std::cout << "Default constructor for Animal called!\n";
     this->type = "Animal";
-    std::cout << "Default constructor for Animal called!\n";
 }
 
 Animal::Animal(const Animal& other)
@@ -18,9 +16,8 @@ Animal& Animal::operator = (const Animal& other)
 {
     std::cout << "Copy assignment operator for Animal called!\n";
 
-    if (this == &other) 
-        return *this;
-    this->type = other.type;
+    if (this != &other) 
+    	this->type = other.type;
     return *this;
 }
 
