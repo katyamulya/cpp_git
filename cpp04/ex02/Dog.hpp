@@ -20,7 +20,7 @@ class Dog : public Animal  //inheritance from class Animal
         ~Dog();
 
         void makeSound() const override;
-        void printBrainIdea(int i) const;
+		void printBrainIdea(int i) const;
         void setNewIdea(int index, std::string idea);
 };
 

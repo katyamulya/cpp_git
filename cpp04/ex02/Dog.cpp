@@ -18,7 +18,7 @@ Dog& Dog::operator=(const Dog& other)
     std::cout << "Copy assignment operator for Dog called!\n";
     if (this != &other) { // 1. Self-assignment check
         //this->type = other.type;
-        // Let Animal handle its part (type, etc.)
+		// Let Animal handle its part (type, etc.)
         Animal::operator=(other); 
         delete this->brain; // 2. Clean up existing brain
         this->brain = new Brain(*(other.brain)); // 3. Deep copy
