@@ -1,0 +1,41 @@
+#include "Brain.hpp"
+#include <iostream>
+
+Brain::Brain()
+{
+	std::cout << "Default constructor for Brain called!\n";
+	for (int i = 0; i < 100; i++)
+	{
+		ideas[i] = "Idea " + i;
+	}
+}
+
+Brain::Brain(const Brain& other)
+{
+	std::cout << "Copy constructor for Brain called!\n";
+	*this = other;   //???????
+}
+
+Brain& Brain::operator= (const Brain& other)
+{
+	std::cout << "Copy assignment operator for Brain called!\n";
+	if (this == &other)
+		return *this;
+	for (int i = 0; i < 100; i++)
+	{
+		ideas[i] = other.ideas[i];
+	}
+	return *this;
+}
+
+Brain::~Brain()
+{
+	std::cout << "Destructor for Brain called!\n";
+}
+
+std::string Brain::getIdea(int index) const
+{
+	if (index < 0 || index >=100)
+		return "Error: Wrong index!";
+	return ideas[index];
+}
