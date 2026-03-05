@@ -2,6 +2,8 @@ NAME = violence
 
 SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
+HEADERS = Weapon.hpp HumanA.hpp HumanB.hpp
+
 OBJ = ${SRC:.cpp=.o}
 
 CC = c++
@@ -9,7 +11,7 @@ CFLAGS = -std=c++17 -Wall -Wextra -Werror
 
 all:	${NAME}
 
-%.o: %.cpp
+%.o: %.cpp ${HEADERS}
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:	${OBJ}

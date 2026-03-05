@@ -6,9 +6,12 @@
 class HumanB
 {
     private:
-        Weapon* weapon;
+
+        Weapon* weapon; //pointer -> allow HumanBto start life with no weapon (pointer can be init to NULL or nullptr).
         std::string name;
+
     public:
+
         HumanB(std::string name);
         ~HumanB();
 

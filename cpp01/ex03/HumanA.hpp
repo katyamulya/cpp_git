@@ -6,9 +6,12 @@
 class HumanA
 {
     private:
-        Weapon& weapon;
+
+        Weapon& weapon;    //reference -> must be init when HumanA created
         std::string name;
+
     public:
+
         HumanA(std::string name, Weapon& weapon);
         ~HumanA();
 
