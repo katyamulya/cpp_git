@@ -1,13 +1,12 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie() {}  //default contructor
-Zombie::Zombie(std::string name)
+Zombie::Zombie() {}
+
+Zombie::Zombie(std::string name) : name(name) {}
+
+Zombie::~Zombie()
 {
-    this->name = name;
-}
-Zombie::~Zombie() //distructor
-{
-    std::cout << name << " was destroyed" << std::endl;
+    std::cout << name << " has been destroyed" << std::endl;
 } 
 
 void Zombie::setName(std::string name)
@@ -15,7 +14,7 @@ void Zombie::setName(std::string name)
     this->name = name;
 }
 
-void Zombie::announce() const
+void Zombie::announce()
 {
     std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

@@ -2,12 +2,13 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
+    // Requirement: Zombie must have a default constructor for this to work
     Zombie* zombies = new Zombie[N];
-    for (int i=0; i<N; i++)
+    
+    for (int i = 0; i < N; i++)
     {
-        zombies[i].setName(std::to_string(i) + " " + name); //to check ig correct
-        //zombies[i].setName(name);
+        zombies[i].setName(std::to_string(i) + " " + name);
     }
 
-    return &zombies[0];
+    return zombies; // Returning 'zombies' is the same as '&zombies[0]'
 }

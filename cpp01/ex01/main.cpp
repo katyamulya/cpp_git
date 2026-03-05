@@ -2,17 +2,24 @@
 
 int main()
 {
-    int N = 3;
-    std::string name = "Zari";
+    int hordeSize = 3;
+    std::string name = "Zoooombiiii";
 
-    Zombie* zombie = zombieHorde(N, name);
-    for (int i=0; i<N; i++)
+    Zombie* zombies = zombieHorde(hordeSize, name);
+    for (int i = 0; i < hordeSize; i++)
     {
-        zombie[i].announce();
-
+        zombies[i].announce();
     }
 
-    delete[] zombie;
+    delete[] zombies;
 
     return 0;
 }
+
+/*
+The Correct Delete: When you are finished with this horde, you must 
+use delete[] (with brackets) rather than just delete.
+delete[] zombies; calls the destructor for every zombie in the array.
+delete zombies; would only call the destructor for the first one, 
+leading to memory leaks or undefined behavior.
+*/
