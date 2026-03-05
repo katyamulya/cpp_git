@@ -2,12 +2,14 @@
 
 int main()
 {
-    Zombie* zombie = newZombie("ZombieFromHeap");
+    /* Heap allocation: */
+    Zombie* zombie = newZombie("ZombieFromHeap");  //"new" wa used, "delete" required
     zombie->announce();
-    
-    randomChump("ZombieFromStack");
-
     delete zombie;
+    
+    /* Stack allocation: */
+    randomChump("ZombieFromStack");  //Destructor  was called automatically, no need "delete"
+
     //zombie->~Zombie();
     /*
     the destructor isn’t called it’s invoked when the object goes out of scope.

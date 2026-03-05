@@ -6,17 +6,26 @@
 class Zombie
 {
     private:
+
         std::string name;
 
     public:
-        //Zombie();  //default contructor
-        Zombie(std::string name);
-        ~Zombie(); //distructor
 
-        void announce() const;
+        Zombie(std::string name);
+        ~Zombie();
+
+        void announce();
 };
 
 Zombie* newZombie( std::string name );
 void randomChump( std::string name );
+
+/*
+The key difference:
+newZombie: Returns a pointer to a survivor (Heap). Manual cleanup required.
+randomChump: Creates a temporary zombie that "dies" immediately after 
+announcing itself (Stack). Automatic cleanup.
+
+*/
 
 #endif
