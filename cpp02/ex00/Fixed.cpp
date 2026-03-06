@@ -1,35 +1,41 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed()
+/* Default constructor: initialize value to 0 */
+Fixed::Fixed() : fpnumber(0)
 {
     std::cout << "Default constructor called\n";
-    fpnumber = 0;
 }
+
+/* Copy constructor: copy the value from 'other' */
 Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called\n";
-    *this = other;
+    *this = other; // Use the assignment operator to avoid logic duplication
 }
-Fixed& Fixed::operator = (const Fixed& other)
+
+/* Copy assignment operator: handle 'a = b' */
+Fixed& Fixed::operator=(const Fixed& other)
 {
     std::cout << "Copy assignment operator called\n";
 
-    if (this != &other) { // avoid self assignment
-       // delete &fpnumber; // cleanup old memory
+    if (this != &other) {
         this->setRawBits(other.getRawBits());
     }
     return *this;
 }
+
+/* Destructor */
 Fixed::~Fixed()
 {
     std::cout << "Destructor Called!" << std::endl;
 }
 
-int Fixed::getRawBits( void ) const
+int Fixed::getRawBits() const
 {
     std::cout << "getRawBits member function called" << std::endl;
     return fpnumber;
 }
+
 void Fixed::setRawBits( int const raw )
 {
     fpnumber = raw;
