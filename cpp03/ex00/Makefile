@@ -2,6 +2,8 @@ NAME = claptrap
 
 SRC = main.cpp ClapTrap.cpp
 
+HEADER = ClapTrap.hpp
+
 OBJ = ${SRC:.cpp=.o}
 
 CC = c++
@@ -9,7 +11,7 @@ CFLAGS = -std=c++17 -Wall -Wextra -Werror
 
 all:	${NAME}
 
-%.o: %.cpp
+%.o: %.cpp ${HEADER}
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:	${OBJ}

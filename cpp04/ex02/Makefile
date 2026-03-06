@@ -2,6 +2,8 @@ NAME = animal
 
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 
+HEADERS = Animal.hpp Dog.hpp Cat.hpp Brain.hpp
+
 OBJ = ${SRC:.cpp=.o}
 
 CC = c++
@@ -9,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++17
 
 all:	${NAME}
 
-%.o: %.cpp
+%.o: %.cpp ${HEADERS}
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:	${OBJ}

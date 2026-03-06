@@ -2,6 +2,8 @@ NAME = fragtrap
 
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
+HEADERS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+
 OBJ = ${SRC:.cpp=.o}
 
 CC = c++
@@ -9,7 +11,7 @@ CFLAGS = -std=c++17 -Wall -Wextra -Werror
 
 all:	${NAME}
 
-%.o: %.cpp
+%.o: %.cpp ${HEADERS}
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:	${OBJ}
