@@ -6,49 +6,53 @@
 
 class Fixed
 {
-private:
-    int fpnumber;
-    static const int fractional = 8;
-public:
-    Fixed();
-    Fixed(const int inumber);
-    Fixed(const float fnumber);
-    Fixed(const Fixed& other);  //Copy constructor
-    Fixed& operator = (const Fixed& other);  //Copy assignment operator
-    ~Fixed();
 
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-    float toFloat() const;
-    int toInt() const;
+    private:
 
-    /* Overloading: */
+        int fpnumber;
+        static const int fractional = 8;
 
-    /* The 6 comparison operators: */
-    bool operator < (const Fixed& arg) const;
-    bool operator > (const Fixed& arg) const;
-    bool operator >= (const Fixed& arg) const;
-    bool operator <= (const Fixed& arg) const;
-    bool operator == (const Fixed& arg) const;
-    bool operator != (const Fixed& arg) const;
+    public:
 
-    /* The 4 arithmetic operators: */
-    Fixed operator + (const Fixed& arg) const;
-    Fixed operator - (const Fixed& arg) const;
-    Fixed operator * (const Fixed& arg) const;
-    Fixed operator / (const Fixed& arg) const;
+        Fixed();
+        Fixed(const int inumber);
+        Fixed(const float fnumber);
+        Fixed(const Fixed& other);
+        Fixed& operator=(const Fixed& other);
+        ~Fixed();
 
-    /* The 4 increment/decrement: */
-    Fixed& operator ++ ();
-    Fixed operator ++ (int);
-    Fixed& operator -- ();
-    Fixed operator -- (int);
+        int getRawBits() const;
+        void setRawBits( int const raw );
+        float toFloat() const;
+        int toInt() const;
 
-    /* The 4 overloaded member functions: */
-    static Fixed& min (Fixed& arg1, Fixed& arg2);
-    static const Fixed& min (const Fixed& arg1, const Fixed& arg2);
-    static Fixed& max (Fixed& arg1, Fixed& arg2);
-    static const Fixed& max (const Fixed& arg1, const Fixed& arg2);
+        /* Overloading: */
+
+        /* The 6 comparison operators: */
+        bool operator<(const Fixed& arg) const;
+        bool operator>(const Fixed& arg) const;
+        bool operator>=(const Fixed& arg) const;
+        bool operator<=(const Fixed& arg) const;
+        bool operator==(const Fixed& arg) const;
+        bool operator!=(const Fixed& arg) const;
+
+        /* The 4 arithmetic operators: */
+        Fixed operator+(const Fixed& arg) const;
+        Fixed operator-(const Fixed& arg) const;
+        Fixed operator*(const Fixed& arg) const;
+        Fixed operator/(const Fixed& arg) const;
+
+        /* The 4 increment/decrement: */
+        Fixed& operator++();
+        Fixed operator++(int);
+        Fixed& operator--();
+        Fixed operator--(int);
+
+        /* The 4 overloaded member functions: */
+        static Fixed& min(Fixed& arg1, Fixed& arg2);
+        static const Fixed& min(const Fixed& arg1, const Fixed& arg2);
+        static Fixed& max(Fixed& arg1, Fixed& arg2);
+        static const Fixed& max(const Fixed& arg1, const Fixed& arg2);
 
 };
 

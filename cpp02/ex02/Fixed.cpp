@@ -5,6 +5,7 @@ Fixed::Fixed()
     std::cout << "Default constructor called\n";
     fpnumber = 0;
 }
+
 Fixed::Fixed(const int inumber)
 {
     std::cout << "Int constructor called\n";
@@ -18,6 +19,7 @@ Fixed::Fixed(const int inumber)
     else
         fpnumber = inumber << fractional;
 }
+
 Fixed::Fixed(const float fnumber)
 {
     std::cout << "Float constructor called\n";
@@ -31,12 +33,14 @@ Fixed::Fixed(const float fnumber)
     else
         fpnumber = roundf(tmpVal);
 }
+
 Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called\n";
     *this = other;
 }
-Fixed& Fixed::operator = (const Fixed& other)
+
+Fixed& Fixed::operator=(const Fixed& other)
 {
     std::cout << "Copy assignment operator called\n";
 
@@ -46,16 +50,17 @@ Fixed& Fixed::operator = (const Fixed& other)
     }
     return *this;
 }
+
 Fixed::~Fixed()
 {
     std::cout << "Destructor Called!" << std::endl;
 }
 
-int Fixed::getRawBits( void ) const
+int Fixed::getRawBits() const
 {
-    //std::cout << "getRawBits member function called" << std::endl;
     return fpnumber;
 }
+
 void Fixed::setRawBits( int const raw )
 {
     fpnumber = raw;
@@ -65,6 +70,7 @@ float Fixed::toFloat() const
 {
     return ((float)fpnumber / (float)(1 << fractional));
 }
+
 int Fixed::toInt() const
 {
     return (fpnumber >> fractional);
@@ -72,65 +78,65 @@ int Fixed::toInt() const
 
 /* Overloading: */
 /* The 6 comparison operators: */
-bool Fixed::operator < (const Fixed& arg) const
+bool Fixed::operator<(const Fixed& arg) const
 {
-    return (this->fpnumber < arg.fpnumber);
+    return (this->fpnumber < arg.getRawBits());
 }
-bool Fixed::operator > (const Fixed& arg) const
+bool Fixed::operator>(const Fixed& arg) const
 {
-    return (this->fpnumber > arg.fpnumber);
+    return (this->fpnumber > arg.getRawBits());
 }
-bool Fixed::operator <= (const Fixed& arg) const
+bool Fixed::operator<=(const Fixed& arg) const
 {
-    return (this->fpnumber <= arg.fpnumber);
+    return (this->fpnumber <= arg.getRawBits());
 }
-bool Fixed::operator >= (const Fixed& arg) const
+bool Fixed::operator>=(const Fixed& arg) const
 {
-    return (this->fpnumber >= arg.fpnumber);
+    return (this->fpnumber >= arg.getRawBits());
 }
-bool Fixed::operator == (const Fixed& arg) const
+bool Fixed::operator==(const Fixed& arg) const
 {
-    return (this->fpnumber == arg.fpnumber);
+    return (this->fpnumber == arg.getRawBits());
 }
-bool Fixed::operator != (const Fixed& arg) const
+bool Fixed::operator!=(const Fixed& arg) const
 {
-    return (this->fpnumber != arg.fpnumber);
+    return (this->fpnumber != arg.getRawBits());
 }
 /* The 4 arithmetic operators: */
-Fixed Fixed::operator + (const Fixed& arg) const
+Fixed Fixed::operator+(const Fixed& arg) const
 {
     return Fixed(this->toFloat() + arg.toFloat());
 }
-Fixed Fixed::operator - (const Fixed& arg) const
+Fixed Fixed::operator-(const Fixed& arg) const
 {
     return Fixed(this->toFloat() - arg.toFloat());
 }
-Fixed Fixed::operator * (const Fixed& arg) const
+Fixed Fixed::operator*(const Fixed& arg) const
 {
     return Fixed(this->toFloat() * arg.toFloat());
 }
-Fixed Fixed::operator / (const Fixed& arg) const
+Fixed Fixed::operator/(const Fixed& arg) const
 {
     return Fixed(this->toFloat() / arg.toFloat());
 }
 /* The 4 increment/decrement: */
-Fixed& Fixed::operator ++ ()
+Fixed& Fixed::operator++()
 {
     ++fpnumber;
     return *this;
 }
-Fixed Fixed::operator ++ (int)
+Fixed Fixed::operator++(int)
 {
     Fixed tmp(*this);
     fpnumber++;
     return tmp;
 }
-Fixed& Fixed::operator -- ()
+Fixed& Fixed::operator--()
 {
     --fpnumber;
     return *this;
 }
-Fixed Fixed::operator -- (int)
+Fixed Fixed::operator--(int)
 {
     Fixed tmp(*this);
     fpnumber--;
@@ -138,22 +144,22 @@ Fixed Fixed::operator -- (int)
 }
 
 /* The 4 overloaded member functions: */
-Fixed& Fixed::min (Fixed& arg1, Fixed& arg2)
+Fixed& Fixed::min(Fixed& arg1, Fixed& arg2)
 {
     //std::cout << "Called min static\n";
     return (arg1 < arg2) ? arg1 : arg2;
 }
-const Fixed& Fixed::min (const Fixed& arg1, const Fixed& arg2)
+const Fixed& Fixed::min(const Fixed& arg1, const Fixed& arg2)
 {
    // std::cout << "Called min static const\n";
     return (arg1 < arg2) ? arg1 : arg2;
 }
-Fixed& Fixed::max (Fixed& arg1, Fixed& arg2)
+Fixed& Fixed::max(Fixed& arg1, Fixed& arg2)
 {
     //std::cout << "Called max static\n";
     return (arg1 > arg2) ? arg1 : arg2;
 }
-const Fixed& Fixed::max (const Fixed& arg1, const Fixed& arg2)
+const Fixed& Fixed::max(const Fixed& arg1, const Fixed& arg2)
 {
     //std::cout << "Called max static const\n";
     return (arg1 > arg2) ? arg1 : arg2;
