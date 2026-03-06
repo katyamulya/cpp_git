@@ -8,7 +8,7 @@ int main (int argc, char **argv)
         return 1;
     }
     
-    Harl harl = Harl();
+    Harl harl;
     harl.complain( argv[1] );
 
     return 0;
