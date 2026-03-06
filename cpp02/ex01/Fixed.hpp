@@ -7,17 +7,20 @@
 class Fixed
 {
 private:
+
     int fpnumber;
     static const int fractional = 8;
+
 public:
+
     Fixed();
     Fixed(const int inumber);
     Fixed(const float fnumber);
-    Fixed(const Fixed& other);  //Copy constructor
-    Fixed& operator = (const Fixed& other);  //Copy assignment operator
+    Fixed(const Fixed& other);
+    Fixed& operator = (const Fixed& other);
     ~Fixed();
 
-    int getRawBits( void ) const;
+    int getRawBits() const;
     void setRawBits( int const raw );
     float toFloat() const;
     int toInt() const;

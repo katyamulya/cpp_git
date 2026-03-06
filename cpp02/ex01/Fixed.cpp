@@ -1,10 +1,10 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed() : fpnumber(0)
 {
     std::cout << "Default constructor called\n";
-    fpnumber = 0;
 }
+
 Fixed::Fixed(const int inumber)
 {
     std::cout << "Int constructor called\n";
@@ -18,6 +18,7 @@ Fixed::Fixed(const int inumber)
     else
         fpnumber = inumber << fractional;
 }
+
 Fixed::Fixed(const float fnumber)
 {
     std::cout << "Float constructor called\n";
@@ -31,11 +32,13 @@ Fixed::Fixed(const float fnumber)
     else
         fpnumber = roundf(tmpVal);
 }
+
 Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called\n";
     *this = other;
 }
+
 Fixed& Fixed::operator = (const Fixed& other)
 {
     std::cout << "Copy assignment operator called\n";
@@ -46,16 +49,18 @@ Fixed& Fixed::operator = (const Fixed& other)
     }
     return *this;
 }
+
 Fixed::~Fixed()
 {
     std::cout << "Destructor Called!" << std::endl;
 }
 
-int Fixed::getRawBits( void ) const
+
+int Fixed::getRawBits() const
 {
-    //std::cout << "getRawBits member function called" << std::endl;
     return fpnumber;
 }
+
 void Fixed::setRawBits( int const raw )
 {
     fpnumber = raw;
@@ -65,6 +70,7 @@ float Fixed::toFloat() const
 {
     return ((float)fpnumber / (float)(1 << fractional));
 }
+
 int Fixed::toInt() const
 {
     return (fpnumber >> fractional);
