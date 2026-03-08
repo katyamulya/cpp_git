@@ -5,10 +5,10 @@ Fixed::Fixed() : fpnumber(0)
     std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed(const int inumber)
+Fixed::Fixed(const int value)
 {
     std::cout << "Int constructor called\n";
-    if (inumber > (INT32_MAX >> fractional) || 
+    /*if (inumber > (INT32_MAX >> fractional) || 
         inumber < (INT32_MIN >> fractional))
     {
         std::cerr << "Error: Int value overflow!\n";
@@ -16,13 +16,14 @@ Fixed::Fixed(const int inumber)
         std::exit(1);
     }
     else
-        fpnumber = inumber << fractional;
+        fpnumber = inumber << fractional;*/
+    this->fxNumber = value << fractionalBits;
 }
 
-Fixed::Fixed(const float fnumber)
+Fixed::Fixed(const float value)
 {
     std::cout << "Float constructor called\n";
-    float tmpVal = fnumber * float(1 << fractional);
+    /*float tmpVal = fnumber * float(1 << fractional);
     if (tmpVal > INT32_MAX || tmpVal < INT32_MIN)
     {
         std::cerr << "Error: Float value overflow!\n";
@@ -30,7 +31,8 @@ Fixed::Fixed(const float fnumber)
         std::exit(1);
     }
     else
-        fpnumber = roundf(tmpVal);
+        fpnumber = roundf(tmpVal);*/
+    this->fxNumber = roundf(value * (1 << fractionalBits));
 }
 
 Fixed::Fixed(const Fixed& other)
