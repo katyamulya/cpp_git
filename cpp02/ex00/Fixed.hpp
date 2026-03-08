@@ -7,7 +7,7 @@ class Fixed
 {
     private:
 
-        int fpnumber;
+        int fxNumber;
         static const int fractional = 8;
 
     public:
@@ -24,8 +24,9 @@ class Fixed
 #endif
 
 /*
-static const int fractional = 8: This means your fixed-point number 
-uses 8 bits for the "decimal" part. In binary, that’s like saying 1.0 
+static const int fractional = 8: Fixed-point number uses 8 bits 
+for the "decimal" part. In binary, that’s like saying 1.0 
 is represented as 256 (2^8)
-fpnumber: This stores the raw integer that represents our "fake" decimal. 
+fxNumber: This stores the raw integer that represents "fake" 
+decimal (the fixed-point number value). 
 */
