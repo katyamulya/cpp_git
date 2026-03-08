@@ -14,8 +14,8 @@ private:
 public:
 
     Fixed();
-    Fixed(const int inumber);
-    Fixed(const float fnumber);
+    Fixed(const int value);
+    Fixed(const float value);
     Fixed(const Fixed& other);
     Fixed& operator = (const Fixed& other);
     ~Fixed();
