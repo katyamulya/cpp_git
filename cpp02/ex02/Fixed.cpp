@@ -3,35 +3,19 @@
 Fixed::Fixed()
 {
     std::cout << "Default constructor called\n";
-    fpnumber = 0;
+    fxNumber = 0;
 }
 
-Fixed::Fixed(const int inumber)
+Fixed::Fixed(const int value)
 {
     std::cout << "Int constructor called\n";
-    if (inumber > (INT32_MAX >> fractional) || 
-        inumber < (INT32_MIN >> fractional))
-    {
-        std::cerr << "Error: Int value overflow!\n";
-        fpnumber = 0;
-        std::exit(1);
-    }
-    else
-        fpnumber = inumber << fractional;
+    fxNumber = value << fractionalBits;
 }
 
-Fixed::Fixed(const float fnumber)
+Fixed::Fixed(const float value)
 {
     std::cout << "Float constructor called\n";
-    float tmpVal = fnumber * float(1 << fractional);
-    if (tmpVal > INT32_MAX || tmpVal < INT32_MIN)
-    {
-        std::cerr << "Error: Float value overflow!\n";
-        fpnumber = 0;
-        std::exit(1);
-    }
-    else
-        fpnumber = roundf(tmpVal);
+    fxNumber = roundf(value * float(1 << fractionalBits));
 }
 
 Fixed::Fixed(const Fixed& other)
@@ -58,49 +42,49 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits() const
 {
-    return fpnumber;
+    return fxNumber;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-    fpnumber = raw;
+    fxNumber = raw;
 }
 
 float Fixed::toFloat() const
 {
-    return ((float)fpnumber / (float)(1 << fractional));
+    return ((float)fxNumber / (float)(1 << fractionalBits));
 }
 
 int Fixed::toInt() const
 {
-    return (fpnumber >> fractional);
+    return (fxNumber >> fractionalBits);
 }
 
 /* Overloading: */
 /* The 6 comparison operators: */
 bool Fixed::operator<(const Fixed& arg) const
 {
-    return (this->fpnumber < arg.getRawBits());
+    return (this->fxNumber < arg.getRawBits());
 }
 bool Fixed::operator>(const Fixed& arg) const
 {
-    return (this->fpnumber > arg.getRawBits());
+    return (this->fxNumber > arg.getRawBits());
 }
 bool Fixed::operator<=(const Fixed& arg) const
 {
-    return (this->fpnumber <= arg.getRawBits());
+    return (this->fxNumber <= arg.getRawBits());
 }
 bool Fixed::operator>=(const Fixed& arg) const
 {
-    return (this->fpnumber >= arg.getRawBits());
+    return (this->fxNumber >= arg.getRawBits());
 }
 bool Fixed::operator==(const Fixed& arg) const
 {
-    return (this->fpnumber == arg.getRawBits());
+    return (this->fxNumber == arg.getRawBits());
 }
 bool Fixed::operator!=(const Fixed& arg) const
 {
-    return (this->fpnumber != arg.getRawBits());
+    return (this->fxNumber != arg.getRawBits());
 }
 /* The 4 arithmetic operators: */
 Fixed Fixed::operator+(const Fixed& arg) const
@@ -122,24 +106,24 @@ Fixed Fixed::operator/(const Fixed& arg) const
 /* The 4 increment/decrement: */
 Fixed& Fixed::operator++()
 {
-    ++fpnumber;
+    ++fxNumber;
     return *this;
 }
 Fixed Fixed::operator++(int)
 {
     Fixed tmp(*this);
-    fpnumber++;
+    fxNumber++;
     return tmp;
 }
 Fixed& Fixed::operator--()
 {
-    --fpnumber;
+    --fxNumber;
     return *this;
 }
 Fixed Fixed::operator--(int)
 {
     Fixed tmp(*this);
-    fpnumber--;
+    fxNumber--;
     return tmp;
 }
 
