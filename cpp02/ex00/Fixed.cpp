@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 
 /* Default constructor: initialize value to 0 */
-Fixed::Fixed() : fpnumber(0)
+Fixed::Fixed() : fxNumber(0)
 {
     std::cout << "Default constructor called\n";
 }
@@ -33,10 +33,10 @@ Fixed::~Fixed()
 int Fixed::getRawBits() const
 {
     std::cout << "getRawBits member function called" << std::endl;
-    return fpnumber;
+    return fxNumber;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-    fpnumber = raw;
+    fxNumber = raw;
 }
