@@ -8,14 +8,14 @@ class Fixed
 {
 private:
 
-    int fpnumber;
-    static const int fractional = 8;
+    int fxNumber;
+    static const int fractionalBits = 8;
 
 public:
 
     Fixed();
-    Fixed(const int inumber);
-    Fixed(const float fnumber);
+    Fixed(const int value);
+    Fixed(const float value);
     Fixed(const Fixed& other);
     Fixed& operator = (const Fixed& other);
     ~Fixed();
