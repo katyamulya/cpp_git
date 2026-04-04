@@ -33,6 +33,7 @@ int main()
 	for (int i = 0; i < 6; i++)
 	{
 		delete animals[i];
+		animals[i] = nullptr; //prevents dangling pointers—a common source of "segmentation faults" in larger projects.
 	}
 
 	std::cout << "\nCreate a copy of Cat:" << std::endl;
